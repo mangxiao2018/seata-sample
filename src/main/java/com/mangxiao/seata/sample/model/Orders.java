@@ -5,7 +5,7 @@ import java.util.Date;
 public class Orders {
     private Long id;
 
-    private Long orderNo;
+    private Long orderId;
 
     private Date createTime;
 
