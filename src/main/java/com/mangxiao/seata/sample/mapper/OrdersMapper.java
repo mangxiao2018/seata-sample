@@ -1,14 +1,21 @@
 package com.mangxiao.seata.sample.mapper;
 
 import com.mangxiao.seata.sample.model.Orders;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
 public interface OrdersMapper {
-
+//    @Results({
+//            @Result(property = "id", column = "id", id = true),
+//            @Result(property = "orderId", column = "order_id"),
+//            @Result(property = "createTime", column = "create_time"),
+//            @Result(property = "updateTime", column = "update_time"),
+//            @Result(property = "createUserId", column = "create_user_id"),
+//            @Result(property = "updateUserId", column = "update_user_id"),
+//            @Result(property = "yn", column = "yn")
+//    })
     /**
      * 根据订单号获取该条订单信息
      * @param orders
@@ -29,7 +36,7 @@ public interface OrdersMapper {
      * @param orders
      * @return
      */
-    @Select("INSERT INTO orders (order_id,create_time,update_time,create_user_id,update_user_id,yn) VALUES(#{orderId},#{createTime},#{updateTime},#{createUserId},#{updateUserId},#{yn})")
+    @Insert("INSERT INTO orders (order_id,create_time,update_time,create_user_id,update_user_id,yn) VALUES(#{orderId},#{createTime},#{updateTime},#{createUserId},#{updateUserId},#{yn})")
     int addOrder(Orders orders);
 
     /**
@@ -37,7 +44,7 @@ public interface OrdersMapper {
      * @param orderId
      * @return
      */
-    @Select("DELETE FROM orders WHERE order_id=#{orderId}")
+    @Delete("DELETE FROM orders WHERE order_id=#{orderId}")
     int deleteOrder(Long orderId);
 
     /**
@@ -45,6 +52,6 @@ public interface OrdersMapper {
      * @param orders
      * @return
      */
-    @Select("UPDATE orders SET create_time=#{createTime},update_time=#{updateTime},create_user_id=#{createUserId},update_user_id=#{updateUserId},yn=#{yn} WHERE order_id=#{orders.orderId}")
+    @Update("UPDATE orders SET create_time=#{createTime},update_time=#{updateTime},create_user_id=#{createUserId},update_user_id=#{updateUserId},yn=#{yn} WHERE order_id=#{orders.orderId}")
     int updateOrder(Orders orders);
 }
