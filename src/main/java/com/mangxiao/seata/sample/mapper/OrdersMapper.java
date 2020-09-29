@@ -53,6 +53,6 @@ public interface OrdersMapper {
      * @param orders
      * @return
      */
-    @Update("UPDATE orders SET create_time=#{createTime},update_time=#{updateTime},create_user_id=#{createUserId},update_user_id=#{updateUserId},yn=#{yn} WHERE order_id=#{orders.orderId}")
+    @Update("UPDATE orders SET update_time=#{updateTime},update_user_id=#{updateUserId},yn=#{yn} WHERE order_id=#{orderId}")
     int updateOrder(Orders orders);
 }

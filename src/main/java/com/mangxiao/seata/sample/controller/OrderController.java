@@ -70,5 +70,40 @@ public class OrderController {
         return r;
     }
 
+    /**
+     * 订单更新
+     * @param orderId
+     * @param createUserId
+     * @param updateUserId
+     * @param yn
+     * @return
+     */
+    @RequestMapping(value = "/updateOrder")
+    @ResponseBody
+    public boolean updateOrder(@Param("orderId") Long orderId,
+                               @Param("createUserId") Long createUserId,
+                               @Param("updateUserId") Long updateUserId,
+                               @Param("yn") int yn){
+        Orders orders = new Orders();
+        orders.setOrderId(orderId);
+        orders.setUpdateTime(new Date());
+        orders.setUpdateUserId(updateUserId);
+        orders.setYn(yn);
+        Boolean r = orderSerevice.updateOrder(orders);
+        log.info("r:" + r);
+        return r;
+    }
 
+    /**
+     * 删除指定订单号的订单信息
+     * @param orderId
+     * @return
+     */
+    @RequestMapping(value = "/deleteOrder")
+    @ResponseBody
+    public boolean deleteOrder(@Param("orderId") Long orderId){
+        Boolean r = orderSerevice.deleteOrder(orderId);
+        log.info("r:" + r);
+        return r;
+    }
 }
