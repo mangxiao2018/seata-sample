@@ -2,19 +2,22 @@ package com.mangxiao.orders.model;
 
 import java.util.Date;
 
+/**
+ * 订单类
+ */
 public class Orders {
     private Long id;
-
+    /** 订单号*/
     private Long orderId;
-
+    /**创建时间*/
     private Date createTime;
-
+    /**更新时间*/
     private Date updateTime;
-
+    /**创建人*/
     private Long createUserId;
-
+    /**更新人*/
     private Long updateUserId;
-
+    /**是否有效*/
     private int yn;
 
     public Long getId() {
