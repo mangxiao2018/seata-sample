@@ -2,26 +2,29 @@ package com.mangxiao.orders.model;
 
 import java.util.Date;
 
+/**
+ *  订单明细类
+ */
 public class OrderItems {
 
     private Long id;
-
+    /** 订单号 */
     private Long orderId;
-
+    /** 商品编号 */
     private Long skuId;
-
+    /** 商品名 */
     private String skuName;
-
+    /** 商品价格 */
     private Double skuPrice;
-
+    /**创建时间*/
     private Date createTime;
-
+    /**更新时间*/
     private Date updateTime;
-
+    /**创建人*/
     private Long createUserId;
-
+    /**更新人*/
     private Long updateUserId;
-
+    /**是否有效*/
     private int yn;
 
 
