@@ -13,7 +13,11 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>seata-sample</name>
     <description>seata-sample</description>
-
+    <modules>
+        <module>seata-sample-finance</module>
+        <module>seata-sample-orders</module>
+        <module>seata-sample-storage</module>
+    </modules>
     <properties>
         <java.version>1.8</java.version>
         <druid.version>0.2.9</druid.version>
