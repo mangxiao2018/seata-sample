@@ -1,6 +1,6 @@
 package com.mangxiao.orders.mapper;
 
-import com.mangxiao.seata.sample.model.Sku;
+import com.mangxiao.orders.model.Sku;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
