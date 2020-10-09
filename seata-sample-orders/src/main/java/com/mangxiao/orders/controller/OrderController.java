@@ -1,7 +1,7 @@
 package com.mangxiao.seata.sample.controller;
 
-import com.mangxiao.seata.sample.Service.OrderSerevice;
-import com.mangxiao.seata.sample.model.Orders;
+import com.mangxiao.orders.Service.OrderSerevice;
+import com.mangxiao.orders.model.Orders;
 import org.apache.ibatis.annotations.Param;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.List;
-@RequestMapping(value = "/")
+@RequestMapping(value = "/order")
 @RestController
 public class OrderController {
     private Log log = LogFactory.getLog(OrderController.class);

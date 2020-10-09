@@ -1,6 +1,6 @@
 package com.mangxiao.orders.Service;
 
-import com.mangxiao.seata.sample.model.Orders;
+import com.mangxiao.orders.model.Orders;
 
 import java.util.List;
 

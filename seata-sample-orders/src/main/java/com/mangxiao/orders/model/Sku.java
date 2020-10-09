@@ -5,17 +5,17 @@ import java.util.Date;
 public class Sku {
 
     private Long id;
-
+    /** 商品名 */
     private String skuName;
-
+    /**创建时间*/
     private Date createTime;
-
+    /**更新时间*/
     private Date updateTime;
-
+    /**创建人*/
     private Long createUserId;
-
+    /**更新人*/
     private Long updateUserId;
-
+    /**是否有效*/
     private int yn;
 
     public Long getId() {
