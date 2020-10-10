@@ -1,10 +1,13 @@
 package com.mangxiao.storage.model;
 
+import lombok.Data;
+
 import java.util.Date;
 
 /**
  * 商品类
  */
+@Data
 public class Sku {
 
     private Long id;
@@ -25,31 +28,55 @@ public class Sku {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getSkuName() {
         return skuName;
+    }
+
+    public void setSkuName(String skuName) {
+        this.skuName = skuName;
     }
 
     public Date getCreateTime() {
         return createTime;
     }
 
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
     public Date getUpdateTime() {
         return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     public Long getCreateUserId() {
         return createUserId;
     }
 
+    public void setCreateUserId(Long createUserId) {
+        this.createUserId = createUserId;
+    }
+
     public Long getUpdateUserId() {
         return updateUserId;
+    }
+
+    public void setUpdateUserId(Long updateUserId) {
+        this.updateUserId = updateUserId;
     }
 
     public int getYn() {
         return yn;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setYn(int yn) {
+        this.yn = yn;
     }
 }
