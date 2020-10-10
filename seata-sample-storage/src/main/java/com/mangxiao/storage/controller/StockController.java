@@ -20,6 +20,13 @@ public class StockController {
     @Autowired
     private StockService stockService;
 
+    /**
+     * 库存扣减
+     * @param skuId
+     * @param warehouseId
+     * @param saledQuantity
+     * @return
+     */
     public Stock deduction(@Param("skuId") long skuId,
                            @Param("warehouseId") long warehouseId,
                            @Param("saledQuantity") int saledQuantity){
@@ -32,7 +39,27 @@ public class StockController {
         }else{
             return null;
         }
+    }
 
+    /**
+     * 采购增加库存
+     * @param skuId
+     * @param warehouseId
+     * @param purchasedQuantity
+     * @return
+     */
+    public Stock Increase(@Param("skuId") long skuId,
+                           @Param("warehouseId") long warehouseId,
+                           @Param("purchasedQuantity") int purchasedQuantity) {
+        Stock s = stockService.getStock(skuId, warehouseId);
+        s.setQuantity(s.getQuantity() + purchasedQuantity);
+        s.setUpdateTime(new Date());
+        boolean r = stockService.updateStock(s);
+        if (r) {
+            return s;
+        } else {
+            return null;
+        }
     }
 
 }
