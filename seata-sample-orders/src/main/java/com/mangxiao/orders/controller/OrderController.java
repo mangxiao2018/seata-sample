@@ -1,4 +1,4 @@
-package com.mangxiao.seata.sample.controller;
+package com.mangxiao.orders.controller;
 
 import com.mangxiao.orders.Service.OrderSerevice;
 import com.mangxiao.orders.model.Orders;
