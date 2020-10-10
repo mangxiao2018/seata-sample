@@ -18,4 +18,9 @@ public class StockServiceImpl implements StockService {
             return Boolean.FALSE;
         }
     }
+
+    @Override
+    public Stock getStock(Long skuId, Long warehouseId) {
+        return stockMapper.getStock(skuId,warehouseId);
+    }
 }
