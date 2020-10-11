@@ -3,6 +3,9 @@ package com.mangxiao.storage.mapper;
 import com.mangxiao.storage.model.Stock;
 import org.apache.ibatis.annotations.*;
 
+/**
+ * 库存Mapper
+ */
 @Mapper
 public interface StockMapper {
 
