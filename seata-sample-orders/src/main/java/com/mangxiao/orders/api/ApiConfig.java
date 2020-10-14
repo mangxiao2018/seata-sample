@@ -6,6 +6,9 @@ import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * http://localhost:8080/swagger-ui.html
+ */
 @Configuration
 public class ApiConfig {
     @Bean
