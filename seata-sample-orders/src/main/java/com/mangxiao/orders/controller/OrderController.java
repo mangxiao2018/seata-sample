@@ -2,6 +2,8 @@ package com.mangxiao.orders.controller;
 
 import com.mangxiao.orders.Service.OrderSerevice;
 import com.mangxiao.orders.model.Orders;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.ibatis.annotations.Param;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.List;
+
+@Api("用户管理api")
 @RequestMapping(value = "/order")
 @RestController
 public class OrderController {
@@ -23,6 +27,7 @@ public class OrderController {
      * 查全部订单
      * @return
      */
+    @ApiOperation("查全部订单")
     @RequestMapping(value = "/getALL")
     @ResponseBody
     public List<Orders> getALL(){
@@ -35,6 +40,7 @@ public class OrderController {
      * @param orderId
      * @return
      */
+    @ApiOperation("查某个订单")
     @RequestMapping(value = "/getOrders")
     @ResponseBody
     public Orders getOrders(@Param("orderId") Long orderId){
@@ -51,6 +57,7 @@ public class OrderController {
      * @param updateUserId
      * @param yn
      */
+    @ApiOperation("新增订单")
     @RequestMapping(value = "/addOrder")
     @ResponseBody
     public boolean addOrder(@Param("orderId") Long orderId,
@@ -78,6 +85,7 @@ public class OrderController {
      * @param yn
      * @return
      */
+    @ApiOperation("订单更新")
     @RequestMapping(value = "/updateOrder")
     @ResponseBody
     public boolean updateOrder(@Param("orderId") Long orderId,
@@ -99,6 +107,7 @@ public class OrderController {
      * @param orderId
      * @return
      */
+    @ApiOperation("删除指定订单号的订单信息")
     @RequestMapping(value = "/deleteOrder")
     @ResponseBody
     public boolean deleteOrder(@Param("orderId") Long orderId){
