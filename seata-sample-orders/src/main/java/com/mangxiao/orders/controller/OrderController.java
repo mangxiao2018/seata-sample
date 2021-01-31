@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 import java.util.List;
 
-@Api("用户管理api")
+@Api("订单管理api")
 @RequestMapping(value = "/order")
 @RestController
 public class OrderController {
