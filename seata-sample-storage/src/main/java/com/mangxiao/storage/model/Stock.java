@@ -1,30 +1,43 @@
 package com.mangxiao.storage.model;
 
-import lombok.Data;
-
 import java.util.Date;
 
 /***
  * 库存表类
  */
-@Data
 public class Stock {
     private Long id;
-    /** 商品编号 */
+    /**
+     * 商品编号
+     */
     private Long skuId;
-    /** 仓库编号 */
+    /**
+     * 仓库编号
+     */
     private Long warehouseId;
-    /** 商品数量 */
+    /**
+     * 商品数量
+     */
     private Integer quantity;
-    /** 创建时间 */
+    /**
+     * 创建时间
+     */
     private Date createTime;
-    /** 更新时间 */
+    /**
+     * 更新时间
+     */
     private Date updateTime;
-    /** 创建人ID */
+    /**
+     * 创建人ID
+     */
     private Long createUserId;
-    /** 更新人ID */
+    /**
+     * 更新人ID
+     */
     private Long updateUserId;
-    /** 是否有效 */
+    /**
+     * 是否有效
+     */
     private int yn;
 
     public Long getId() {
@@ -97,5 +110,20 @@ public class Stock {
 
     public void setYn(int yn) {
         this.yn = yn;
+    }
+
+    @Override
+    public String toString() {
+        return "Stock{" +
+                "id=" + id +
+                ", skuId=" + skuId +
+                ", warehouseId=" + warehouseId +
+                ", quantity=" + quantity +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", createUserId=" + createUserId +
+                ", updateUserId=" + updateUserId +
+                ", yn=" + yn +
+                '}';
     }
 }

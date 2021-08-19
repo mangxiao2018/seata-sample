@@ -6,6 +6,9 @@ import com.mangxiao.storage.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Service
 public class StockServiceImpl implements StockService {
     @Autowired
@@ -20,7 +23,12 @@ public class StockServiceImpl implements StockService {
     }
 
     @Override
-    public Stock getStock(Long skuId, Long warehouseId) {
-        return stockMapper.getStock(skuId,warehouseId);
+    public Stock getStock(Stock stock) {
+        return stockMapper.getStock(stock);
+    }
+
+    @Override
+    public List<Stock> getAll() {
+        return stockMapper.getAll();
     }
 }
