@@ -9,6 +9,10 @@ public class Orders {
     private Long id;
     /** 订单号*/
     private Long orderId;
+    /** 商品id */
+    private Long skuId;
+    /** 仓库id */
+    private Long warehouseId;
     /**创建时间*/
     private Date createTime;
     /**更新时间*/
@@ -34,6 +38,22 @@ public class Orders {
 
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
+    }
+
+    public Long getSkuId() {
+        return skuId;
+    }
+
+    public void setSkuId(Long skuId) {
+        this.skuId = skuId;
+    }
+
+    public Long getWarehouseId() {
+        return warehouseId;
+    }
+
+    public void setWarehouseId(Long warehouseId) {
+        this.warehouseId = warehouseId;
     }
 
     public Date getCreateTime() {

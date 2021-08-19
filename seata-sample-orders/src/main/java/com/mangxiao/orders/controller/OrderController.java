@@ -28,9 +28,9 @@ public class OrderController {
      * @return
      */
     @ApiOperation("查全部订单")
-    @RequestMapping(value = "/getALL")
+    @RequestMapping(value = "/getAll")
     @ResponseBody
-    public List<Orders> getALL(){
+    public List<Orders> getAll(){
         List<Orders> dataList = orderSerevice.getAll();
         return dataList;
     }
