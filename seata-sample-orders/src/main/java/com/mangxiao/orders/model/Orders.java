@@ -1,5 +1,6 @@
 package com.mangxiao.orders.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -13,6 +14,10 @@ public class Orders {
     private Long skuId;
     /** 仓库id */
     private Long warehouseId;
+    /** 订单中各商品数量 */
+    private Integer quantity;
+    /** 订单总金额 */
+    private Float totalAmount;
     /**创建时间*/
     private Date createTime;
     /**更新时间*/
@@ -94,5 +99,21 @@ public class Orders {
 
     public void setYn(int yn) {
         this.yn = yn;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Float getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(Float totalAmount) {
+        this.totalAmount = totalAmount;
     }
 }

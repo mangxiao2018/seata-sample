@@ -2,12 +2,14 @@ package com.mangxiao.orders.controller;
 
 import com.mangxiao.orders.Service.OrderSerevice;
 import com.mangxiao.orders.model.Orders;
+import com.mangxiao.orders.util.OrderNoUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.ibatis.annotations.Param;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.OrderUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,26 +54,17 @@ public class OrderController {
 
     /**
      * 新增订单
-     * @param orderId
-     * @param createUserId
-     * @param updateUserId
-     * @param yn
+     * @param skuId
      */
     @ApiOperation("新增订单")
     @RequestMapping(value = "/addOrder")
     @ResponseBody
-    public boolean addOrder(@Param("orderId") Long orderId,
-                         @Param("createUserId") Long createUserId,
-                         @Param("updateUserId") Long updateUserId,
-                         @Param("yn") int yn
-                         ){
+    public boolean addOrder(@Param("skuId") Long skuId,
+                            @Param("quantity") int quantity){
         Orders orders = new Orders();
-        orders.setOrderId(orderId);
-        orders.setCreateTime(new Date());
-        orders.setUpdateTime(new Date());
-        orders.setCreateUserId(createUserId);
-        orders.setUpdateUserId(updateUserId);
-        orders.setYn(yn);
+        orders.setOrderId(Long.valueOf(OrderNoUtil.getOrderNo()));
+        orders.setSkuId(skuId);
+        orders.setQuantity(quantity);
         Boolean r = orderSerevice.addOrder(orders);
         log.info("r:" + r);
         return r;
