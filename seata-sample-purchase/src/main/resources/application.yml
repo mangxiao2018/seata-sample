@@ -1,0 +1,28 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3307/db_storage?useSSL=false&serverTimezone=UTC
+    username: mangxiao
+    password: 1qaz2wsx
+seata: #seata-app-config
+  enabled: true
+  application-id: seata-sample-purchase
+  tx-service-group: my_test_tx_group
+  #enable-auto-data-source-proxy: true
+  #use-jdk-proxy: false
+  service: #seata-server-config
+    vgroup-mapping:
+      my_test_tx_group: default
+    grouplist:
+      default: 10.105.22.110:8091
+    #enable-degrade: false
+    #disable-global-transaction: false
+  registry:
+    type: file
+    nacos:
+      cluster: default
+      server-addr: 10.105.22.86:8848
+      namespace:
