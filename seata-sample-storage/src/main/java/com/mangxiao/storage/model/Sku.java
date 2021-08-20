@@ -11,8 +11,12 @@ import java.util.Date;
 public class Sku {
 
     private Long id;
+    /** 商品Id */
+    private Long skuId;
     /** 商品名称 */
     private String skuName;
+    /** 商品价格 */
+    private Float skuPrice;
     /** 创建时间 */
     private Date createTime;
     /** 更新时间 */
@@ -78,5 +82,21 @@ public class Sku {
 
     public void setYn(int yn) {
         this.yn = yn;
+    }
+
+    public Long getSkuId() {
+        return skuId;
+    }
+
+    public void setSkuId(Long skuId) {
+        this.skuId = skuId;
+    }
+
+    public Float getSkuPrice() {
+        return skuPrice;
+    }
+
+    public void setSkuPrice(Float skuPrice) {
+        this.skuPrice = skuPrice;
     }
 }
