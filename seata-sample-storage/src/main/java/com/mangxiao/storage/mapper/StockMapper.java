@@ -30,6 +30,9 @@ public interface StockMapper {
     @Select("SELECT id,sku_id,warehouse_id,quantity,create_time,update_time,create_user_id,update_user_id,yn FROM stock WHERE sku_id=#{skuId} and warehouse_id=#{warehouseId}")
     Stock getStock(Stock stock);
 
+    @Select("SELECT id,sku_id,warehouse_id,quantity,create_time,update_time,create_user_id,update_user_id,yn FROM stock WHERE sku_id=#{skuId}")
+    Stock getStocks(Stock stock);
+
     @Select("SELECT id,sku_id,warehouse_id,quantity,create_time,update_time,create_user_id,update_user_id,yn FROM stock")
     List<Stock> getAll();
 }

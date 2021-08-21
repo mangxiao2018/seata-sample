@@ -23,6 +23,12 @@ public interface StockService {
     public Stock getStock(Stock stock);
 
     /**
+     * 根据商品id获取某一库存数据
+     * @param stock
+     * @return
+     */
+    public Stock getStocks(Stock stock);
+    /**
      * 获取所有库存数据
      * @return
      */

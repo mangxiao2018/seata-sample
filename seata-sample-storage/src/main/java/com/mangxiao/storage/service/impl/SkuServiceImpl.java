@@ -14,6 +14,6 @@ public class SkuServiceImpl implements SkuService {
 
     @Override
     public Sku getSku(Sku sku) {
-        return skuMapper.getStock(sku);
+        return skuMapper.getSku(sku);
     }
 }

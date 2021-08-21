@@ -26,7 +26,10 @@ public class StockServiceImpl implements StockService {
     public Stock getStock(Stock stock) {
         return stockMapper.getStock(stock);
     }
-
+    @Override
+    public Stock getStocks(Stock stock) {
+        return stockMapper.getStocks(stock);
+    }
     @Override
     public List<Stock> getAll() {
         return stockMapper.getAll();

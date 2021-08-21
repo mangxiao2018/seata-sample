@@ -68,6 +68,15 @@ public class StockController {
         return s;
     }
 
+    @ApiOperation("根据商品编码查某个库存")
+    @RequestMapping(value = "/getStocks")
+    @ResponseBody
+    public Stock getStocks(@Param("skuId") long skuId){
+        Stock stock = new Stock();
+        stock.setSkuId(skuId);
+        Stock s = stockService.getStocks(stock);
+        return s;
+    }
     /**
      * 采购增加库存
      * @param skuId

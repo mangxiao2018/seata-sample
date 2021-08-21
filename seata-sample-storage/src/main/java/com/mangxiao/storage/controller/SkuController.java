@@ -24,7 +24,6 @@ public class SkuController {
     public Sku getSku(@Param("skuId") long skuId){
         log.debug("#####skuId##:" + skuId);
         Sku s = new Sku();
-        s.setId(skuId);
         s.setSkuId(skuId);
         log.debug("#####sku##:" + s);
         Sku sku = skuService.getSku(s);
