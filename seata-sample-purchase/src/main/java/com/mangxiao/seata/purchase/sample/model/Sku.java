@@ -36,12 +36,28 @@ public class Sku {
         this.id = id;
     }
 
+    public Long getSkuId() {
+        return skuId;
+    }
+
+    public void setSkuId(Long skuId) {
+        this.skuId = skuId;
+    }
+
     public String getSkuName() {
         return skuName;
     }
 
     public void setSkuName(String skuName) {
         this.skuName = skuName;
+    }
+
+    public Float getSkuPrice() {
+        return skuPrice;
+    }
+
+    public void setSkuPrice(Float skuPrice) {
+        this.skuPrice = skuPrice;
     }
 
     public Date getCreateTime() {
@@ -82,21 +98,5 @@ public class Sku {
 
     public void setYn(int yn) {
         this.yn = yn;
-    }
-
-    public Long getSkuId() {
-        return skuId;
-    }
-
-    public void setSkuId(Long skuId) {
-        this.skuId = skuId;
-    }
-
-    public Float getSkuPrice() {
-        return skuPrice;
-    }
-
-    public void setSkuPrice(Float skuPrice) {
-        this.skuPrice = skuPrice;
     }
 }
