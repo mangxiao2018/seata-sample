@@ -10,6 +10,11 @@ public interface OrdersMapper {
     @Results(id="OrdersMap", value = {
             @Result(property = "id", column = "id", id = true),
             @Result(property = "orderId", column = "order_id"),
+            @Result(property = "skuId", column = "sku_id"),
+            @Result(property = "skuPrice", column = "sku_price"),
+            @Result(property = "quantity", column = "quantity"),
+            @Result(property = "totalAmount", column = "total_amount"),
+            @Result(property = "warehouseId", column = "warehouse_id"),
             @Result(property = "createTime", column = "create_time"),
             @Result(property = "updateTime", column = "update_time"),
             @Result(property = "createUserId", column = "create_user_id"),
@@ -37,7 +42,7 @@ public interface OrdersMapper {
      * @param orders
      * @return
      */
-    @Insert("INSERT INTO orders (order_id,create_time,update_time,create_user_id,update_user_id,yn) VALUES(#{orderId},#{createTime},#{updateTime},#{createUserId},#{updateUserId},#{yn})")
+    @Insert("INSERT INTO orders (order_id,sku_id,sku_price,quantity,total_amount,warehouse_id) VALUES(#{orderId},#{skuId},#{skuPrice},#{quantity},#{totalAmount},#{warehouseId})")
     int addOrder(Orders orders);
 
     /**

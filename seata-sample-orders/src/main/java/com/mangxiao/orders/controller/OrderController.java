@@ -59,15 +59,21 @@ public class OrderController {
     @ApiOperation("新增订单")
     @RequestMapping(value = "/addOrder")
     @ResponseBody
-    public boolean addOrder(@Param("skuId") Long skuId,
+    public String addOrder(@Param("skuId") Long skuId,
+                            @Param("skuPrice") float skuPrice,
+                            @Param("warehouseId") Long warehouseId,
                             @Param("quantity") int quantity){
         Orders orders = new Orders();
-        orders.setOrderId(Long.valueOf(OrderNoUtil.getOrderNo()));
+        String orderNo = OrderNoUtil.getOrderNo();
+        orders.setOrderId(Long.valueOf(orderNo));
         orders.setSkuId(skuId);
+        orders.setSkuPrice(skuPrice);
+        orders.setWarehouseId(warehouseId);
         orders.setQuantity(quantity);
+        orders.setTotalAmount(skuPrice * quantity);
         Boolean r = orderSerevice.addOrder(orders);
         log.info("r:" + r);
-        return r;
+        return orderNo;
     }
 
     /**

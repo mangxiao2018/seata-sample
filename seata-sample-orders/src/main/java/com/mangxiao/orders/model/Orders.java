@@ -12,6 +12,8 @@ public class Orders {
     private Long orderId;
     /** 商品id */
     private Long skuId;
+    /** 商品价格*/
+    private Float skuPrice;
     /** 仓库id */
     private Long warehouseId;
     /** 订单中各商品数量 */
@@ -115,5 +117,13 @@ public class Orders {
 
     public void setTotalAmount(Float totalAmount) {
         this.totalAmount = totalAmount;
+    }
+
+    public Float getSkuPrice() {
+        return skuPrice;
+    }
+
+    public void setSkuPrice(Float skuPrice) {
+        this.skuPrice = skuPrice;
     }
 }
