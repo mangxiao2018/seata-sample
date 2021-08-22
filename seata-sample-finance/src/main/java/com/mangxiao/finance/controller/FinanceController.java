@@ -2,6 +2,7 @@ package com.mangxiao.finance.controller;
 
 import com.mangxiao.finance.model.Account;
 import com.mangxiao.finance.service.AccountService;
+import io.seata.core.context.RootContext;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
@@ -47,6 +48,7 @@ public class FinanceController {
         account.setQuantity(quantity);
         account.setTotalAmount(skuPrice * quantity);
         log.debug("###account###:" + account.toString());
+        System.out.println("account XID " + RootContext.getXID());
         return accountService.addAccount(account);
     }
 }

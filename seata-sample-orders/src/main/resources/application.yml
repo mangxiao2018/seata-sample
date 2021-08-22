@@ -7,25 +7,23 @@ spring:
     url: jdbc:mysql://127.0.0.1:3307/db_order?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
     username: mangxiao
     password: 1qaz2wsx
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.105.22.86:8848
+    alibaba:
+      seata:
+        tx-service-group: my_test_tx_group
+  application:
+    name: seata-sample-orders
 mybatis: #加上此配置解决返回数据部分字段为null的问题
   configuration:
     map-underscore-to-camel-case: true
 seata:
-  enabled: true
-  application-id: seata-sample-orders
-  tx-service-group: my_test_tx_group
-  #enable-auto-data-source-proxy: true
-  #use-jdk-proxy: false
   service:
     vgroup-mapping:
       my_test_tx_group: default
     grouplist:
       default: 10.105.22.110:8091
-    #enable-degrade: false
-    #disable-global-transaction: false
-  registry:
-    type: file
-    nacos:
-      cluster: default
-      server-addr: 10.105.22.86:8848
-      namespace:
+    enable-degrade: false
+    disable-global-transaction: false

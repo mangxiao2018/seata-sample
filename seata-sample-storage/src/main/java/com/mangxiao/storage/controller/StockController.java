@@ -2,6 +2,7 @@ package com.mangxiao.storage.controller;
 
 import com.mangxiao.storage.model.Stock;
 import com.mangxiao.storage.service.StockService;
+import io.seata.core.context.RootContext;
 import io.swagger.annotations.ApiOperation;
 import org.apache.ibatis.annotations.Param;
 import org.apache.juli.logging.Log;
@@ -36,6 +37,7 @@ public class StockController {
     public Stock deduction(@Param("skuId") long skuId,
                            @Param("warehouseId") long warehouseId,
                            @Param("saledQuantity") int saledQuantity){
+        System.out.println("storage XID " + RootContext.getXID());
         Stock stock = new Stock();
         stock.setSkuId(skuId);
         stock.setWarehouseId(warehouseId);
