@@ -9,6 +9,7 @@ import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,9 +35,9 @@ public class StockController {
     @ApiOperation("扣减库存")
     @RequestMapping(value = "/deduction")
     @ResponseBody
-    public Stock deduction(@Param("skuId") long skuId,
-                           @Param("warehouseId") long warehouseId,
-                           @Param("saledQuantity") int saledQuantity){
+    public Stock deduction(@RequestParam("skuId") long skuId,
+                           @RequestParam("warehouseId") long warehouseId,
+                           @RequestParam("saledQuantity") int saledQuantity){
         System.out.println("storage XID " + RootContext.getXID());
         Stock stock = new Stock();
         stock.setSkuId(skuId);
@@ -61,8 +62,8 @@ public class StockController {
     @ApiOperation("查某个库存")
     @RequestMapping(value = "/getStock")
     @ResponseBody
-    public Stock getStock(@Param("skuId") long skuId,
-                          @Param("warehouseId") long warehouseId){
+    public Stock getStock(@RequestParam("skuId") long skuId,
+                          @RequestParam("warehouseId") long warehouseId){
         Stock stock = new Stock();
         stock.setSkuId(skuId);
         stock.setWarehouseId(warehouseId);
@@ -72,8 +73,7 @@ public class StockController {
 
     @ApiOperation("根据商品编码查某个库存")
     @RequestMapping(value = "/getStocks")
-    @ResponseBody
-    public Stock getStocks(@Param("skuId") long skuId){
+    public Stock getStocks(@RequestParam("skuId") long skuId){
         Stock stock = new Stock();
         stock.setSkuId(skuId);
         Stock s = stockService.getStocks(stock);
@@ -89,9 +89,9 @@ public class StockController {
     @ApiOperation("增加库存")
     @RequestMapping(value = "/increase")
     @ResponseBody
-    public Stock increase(@Param("skuId") long skuId,
-                           @Param("warehouseId") long warehouseId,
-                           @Param("purchasedQuantity") int purchasedQuantity) {
+    public Stock increase(@RequestParam("skuId") long skuId,
+                           @RequestParam("warehouseId") long warehouseId,
+                           @RequestParam("purchasedQuantity") int purchasedQuantity) {
         Stock stock = new Stock();
         stock.setSkuId(skuId);
         stock.setWarehouseId(warehouseId);

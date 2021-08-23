@@ -2,8 +2,9 @@ package com.mangxiao.orders;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.mangxiao.orders", exclude = DataSourceAutoConfiguration.class)
 public class SeataSampleOrdersApplication {
 
 	public static void main(String[] args) {

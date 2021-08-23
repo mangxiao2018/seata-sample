@@ -5,12 +5,11 @@ import com.mangxiao.orders.model.Orders;
 import com.mangxiao.orders.util.OrderNoUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.ibatis.annotations.Param;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.OrderUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -45,7 +44,7 @@ public class OrderController {
     @ApiOperation("查某个订单")
     @RequestMapping(value = "/getOrders")
     @ResponseBody
-    public Orders getOrders(@Param("orderId") Long orderId){
+    public Orders getOrders(@RequestParam("orderId") Long orderId){
         Orders orders = new Orders();
         orders.setOrderId(orderId);
         Orders order = orderSerevice.getOrders(orders);
@@ -59,10 +58,10 @@ public class OrderController {
     @ApiOperation("新增订单")
     @RequestMapping(value = "/addOrder")
     @ResponseBody
-    public String addOrder(@Param("skuId") Long skuId,
-                            @Param("skuPrice") float skuPrice,
-                            @Param("warehouseId") Long warehouseId,
-                            @Param("quantity") int quantity){
+    public String addOrder(@RequestParam("skuId") Long skuId,
+                            @RequestParam("skuPrice") float skuPrice,
+                            @RequestParam("warehouseId") Long warehouseId,
+                            @RequestParam("quantity") int quantity){
         Orders orders = new Orders();
         String orderNo = OrderNoUtil.getOrderNo();
         orders.setOrderId(Long.valueOf(orderNo));
@@ -73,6 +72,7 @@ public class OrderController {
         orders.setTotalAmount(skuPrice * quantity);
         Boolean r = orderSerevice.addOrder(orders);
         log.info("r:" + r);
+        System.out.println("orderNo#####" + orderNo);
         return orderNo;
     }
 
@@ -87,10 +87,10 @@ public class OrderController {
     @ApiOperation("订单更新")
     @RequestMapping(value = "/updateOrder")
     @ResponseBody
-    public boolean updateOrder(@Param("orderId") Long orderId,
-                               @Param("createUserId") Long createUserId,
-                               @Param("updateUserId") Long updateUserId,
-                               @Param("yn") int yn){
+    public boolean updateOrder(@RequestParam("orderId") Long orderId,
+                               @RequestParam("createUserId") Long createUserId,
+                               @RequestParam("updateUserId") Long updateUserId,
+                               @RequestParam("yn") int yn){
         Orders orders = new Orders();
         orders.setOrderId(orderId);
         orders.setUpdateTime(new Date());
@@ -109,7 +109,7 @@ public class OrderController {
     @ApiOperation("删除指定订单号的订单信息")
     @RequestMapping(value = "/deleteOrder")
     @ResponseBody
-    public boolean deleteOrder(@Param("orderId") Long orderId){
+    public boolean deleteOrder(@RequestParam("orderId") Long orderId){
         Boolean r = orderSerevice.deleteOrder(orderId);
         log.info("r:" + r);
         return r;

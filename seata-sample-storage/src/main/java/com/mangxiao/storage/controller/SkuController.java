@@ -5,9 +5,9 @@ import com.mangxiao.storage.service.SkuService;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +21,7 @@ public class SkuController {
     @ApiOperation("根据skuId获取商品信息")
     @RequestMapping(value = "/getSku")
     @ResponseBody
-    public Sku getSku(@Param("skuId") long skuId){
+    public Sku getSku(@RequestParam("skuId") long skuId){
         log.debug("#####skuId##:" + skuId);
         Sku s = new Sku();
         s.setSkuId(skuId);

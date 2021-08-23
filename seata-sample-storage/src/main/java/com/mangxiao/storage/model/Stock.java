@@ -1,10 +1,13 @@
 package com.mangxiao.storage.model;
 
+import lombok.Data;
+
 import java.util.Date;
 
 /***
  * 库存表类
  */
+@Data
 public class Stock {
     private Long id;
     /**
