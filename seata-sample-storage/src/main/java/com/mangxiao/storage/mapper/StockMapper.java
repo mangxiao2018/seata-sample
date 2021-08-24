@@ -1,6 +1,6 @@
 package com.mangxiao.storage.mapper;
 
-import com.mangxiao.storage.model.Stock;
+import com.mangxiao.common.model.Stock;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 

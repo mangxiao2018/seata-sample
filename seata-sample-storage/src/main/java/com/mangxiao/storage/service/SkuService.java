@@ -1,6 +1,7 @@
 package com.mangxiao.storage.service;
 
-import com.mangxiao.storage.model.Sku;
+
+import com.mangxiao.common.model.Sku;
 
 /**
  * SKU Service

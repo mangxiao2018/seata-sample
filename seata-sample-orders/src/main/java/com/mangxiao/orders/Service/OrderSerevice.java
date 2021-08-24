@@ -1,6 +1,6 @@
 package com.mangxiao.orders.Service;
 
-import com.mangxiao.orders.model.Orders;
+import com.mangxiao.common.model.Orders;
 
 import java.util.List;
 

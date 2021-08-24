@@ -1,0 +1,33 @@
+server:
+  port: 8084
+  servlet:
+    context-path: /
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3307/db_account?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    username: mangxiao
+    password: 1qaz2wsx
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.105.22.86:8848
+      config:
+        enabled: false
+    alibaba:
+      seata:
+        tx-service-group: my_test_tx_group
+  application:
+    name: seata-sample-finance
+mybatis: #加上此配置解决返回数据部分字段为null的问题
+  configuration:
+    map-underscore-to-camel-case: true
+seata:
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default
+    grouplist:
+      default: 10.105.22.110:8091
+    enable-degrade: false
+    disable-global-transaction: false

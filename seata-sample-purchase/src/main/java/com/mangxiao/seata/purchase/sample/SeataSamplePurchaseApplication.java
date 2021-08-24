@@ -3,8 +3,12 @@ package com.mangxiao.seata.purchase.sample;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@SpringBootApplication(scanBasePackages = "com.mangxiao.seata.purchase.sample", exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@EnableFeignClients(basePackages = "com.mangxiao.seata.purchase.sample")
+@EnableDiscoveryClient
 public class SeataSamplePurchaseApplication {
 
     public static void main(String[] args) {

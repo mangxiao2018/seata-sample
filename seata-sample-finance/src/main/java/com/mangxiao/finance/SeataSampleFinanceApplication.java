@@ -1,10 +1,13 @@
 package com.mangxiao.finance;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-@SpringBootApplication(scanBasePackages = "com.mangxiao.finance", exclude = DataSourceAutoConfiguration.class)
+@SpringBootApplication
+@MapperScan("com.mangxiao.finance.mapper")
+@EnableDiscoveryClient
 public class SeataSampleFinanceApplication {
 
 	public static void main(String[] args) {

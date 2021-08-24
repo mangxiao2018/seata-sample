@@ -1,8 +1,7 @@
 package com.mangxiao.seata.purchase.sample.service;
 
-import com.mangxiao.seata.purchase.sample.model.Purchase;
 
-import java.net.URISyntaxException;
+import com.mangxiao.common.model.Purchase;
 
 public interface PurchaseService {
 

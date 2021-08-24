@@ -1,8 +1,8 @@
 package com.mangxiao.orders.Service.impl;
 
+import com.mangxiao.common.model.Orders;
 import com.mangxiao.orders.Service.OrderSerevice;
 import com.mangxiao.orders.mapper.OrdersMapper;
-import com.mangxiao.orders.model.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

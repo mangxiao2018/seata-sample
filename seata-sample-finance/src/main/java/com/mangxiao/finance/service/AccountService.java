@@ -1,6 +1,7 @@
 package com.mangxiao.finance.service;
 
-import com.mangxiao.finance.model.Account;
+
+import com.mangxiao.common.model.Account;
 
 public interface AccountService {
 

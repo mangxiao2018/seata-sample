@@ -1,10 +1,9 @@
 package com.mangxiao.storage.controller;
 
-import com.mangxiao.storage.model.Stock;
+import com.mangxiao.common.model.Stock;
 import com.mangxiao.storage.service.StockService;
 import io.seata.core.context.RootContext;
 import io.swagger.annotations.ApiOperation;
-import org.apache.ibatis.annotations.Param;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.mangxiao.storage.service;
 
-import com.mangxiao.storage.model.Stock;
+import com.mangxiao.common.model.Stock;
 
 import java.util.List;
 

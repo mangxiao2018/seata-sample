@@ -1,6 +1,6 @@
 package com.mangxiao.finance.mapper;
 
-import com.mangxiao.finance.model.Account;
+import com.mangxiao.common.model.Account;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;

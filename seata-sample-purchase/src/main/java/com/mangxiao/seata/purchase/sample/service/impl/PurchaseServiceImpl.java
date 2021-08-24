@@ -1,9 +1,9 @@
 package com.mangxiao.seata.purchase.sample.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.mangxiao.seata.purchase.sample.model.Purchase;
-import com.mangxiao.seata.purchase.sample.model.Sku;
-import com.mangxiao.seata.purchase.sample.model.Stock;
+import com.mangxiao.common.model.Purchase;
+import com.mangxiao.common.model.Sku;
+import com.mangxiao.common.model.Stock;
 import com.mangxiao.seata.purchase.sample.service.PurchaseService;
 import com.mangxiao.seata.purchase.sample.util.OkHttpUtil;
 import io.seata.core.context.RootContext;
@@ -20,19 +20,18 @@ public class PurchaseServiceImpl implements PurchaseService {
     @Autowired
     private RestTemplate restTemplate;
     /** 商品获取接口地址 */
-    private static final String SKU_API_URL = "http://10.105.22.38:8083/sku/getSku";
+    private static final String SKU_API_URL = "http://10.105.22.106:8083/sku/getSku";
     /** 创建订单接口地址 */
-    private static final String ORDER_API_URL = "http://10.105.22.38:8082/order/addOrder";
+    private static final String ORDER_API_URL = "http://10.105.22.106:8082/order/addOrder";
     /** 财务记账接口地址 */
-    private static final String FINANCE_API_URL = "http://10.105.22.38:8084/finance/accounting";
+    private static final String FINANCE_API_URL = "http://10.105.22.106:8084/finance/accounting";
     /** 扣减库存接口地址 */
-    private static final String DEDUCTION_STORAGE_API_URL = "http://10.105.22.38:8083/stock/deduction";
+    private static final String DEDUCTION_STORAGE_API_URL = "http://10.105.22.106:8083/stock/deduction";
     /** 查库存接口地址 */
-    private static final String QUARY_STORAGE_API_URL = "http://10.105.22.38:8083/stock/getStocks";
+    private static final String QUARY_STORAGE_API_URL = "http://10.105.22.106:8083/stock/getStocks";
 
-    @GlobalTransactional
+
     public boolean purchase(Purchase purchase) {
-        System.out.println("@@@@@@@purchase XID " + RootContext.getXID());
         // 1.获取商品信息
         Sku sku = getSku(purchase);
         // 2.获取库存信息

@@ -1,8 +1,9 @@
 package com.mangxiao.orders.controller;
 
+import com.mangxiao.common.model.Orders;
 import com.mangxiao.orders.Service.OrderSerevice;
-import com.mangxiao.orders.model.Orders;
 import com.mangxiao.orders.util.OrderNoUtil;
+import io.seata.core.context.RootContext;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.juli.logging.Log;
@@ -62,6 +63,7 @@ public class OrderController {
                             @RequestParam("skuPrice") float skuPrice,
                             @RequestParam("warehouseId") Long warehouseId,
                             @RequestParam("quantity") int quantity){
+        System.out.println("###########orders XID " + RootContext.getXID());
         Orders orders = new Orders();
         String orderNo = OrderNoUtil.getOrderNo();
         orders.setOrderId(Long.valueOf(orderNo));

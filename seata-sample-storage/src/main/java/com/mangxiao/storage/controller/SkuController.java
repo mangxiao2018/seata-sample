@@ -1,7 +1,8 @@
 package com.mangxiao.storage.controller;
 
-import com.mangxiao.storage.model.Sku;
+import com.mangxiao.common.model.Sku;
 import com.mangxiao.storage.service.SkuService;
+import io.seata.core.context.RootContext;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -22,6 +23,7 @@ public class SkuController {
     @RequestMapping(value = "/getSku")
     @ResponseBody
     public Sku getSku(@RequestParam("skuId") long skuId){
+        System.out.println("###########sku XID " + RootContext.getXID());
         log.debug("#####skuId##:" + skuId);
         Sku s = new Sku();
         s.setSkuId(skuId);

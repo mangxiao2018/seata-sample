@@ -1,6 +1,6 @@
 package com.mangxiao.finance.controller;
 
-import com.mangxiao.finance.model.Account;
+import com.mangxiao.common.model.Account;
 import com.mangxiao.finance.service.AccountService;
 import io.seata.core.context.RootContext;
 import io.swagger.annotations.ApiOperation;
@@ -32,12 +32,16 @@ public class FinanceController {
     @ApiOperation("财务记账")
     @RequestMapping(value = "/accounting")
     @ResponseBody
-    public boolean accounting(@RequestParam("orderId") long orderId,
+    public Boolean accounting(@RequestParam("orderId") long orderId,
                               @RequestParam("skuId") long skuId,
                               @RequestParam("skuName") String skuName,
                               @RequestParam("skuPrice") float skuPrice,
                               @RequestParam("warehouseId") long warehouseId,
                               @RequestParam("quantity") int quantity){
+        System.out.println("###########finance XID " + RootContext.getXID());
+        if(skuId == 0 || skuId == 100100001){
+            throw new RuntimeException("故意抛出空指针异常");
+        }
         Account account = new Account();
         account.setOrderId(orderId);
         account.setSkuId(skuId);

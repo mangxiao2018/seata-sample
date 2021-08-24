@@ -1,6 +1,6 @@
 package com.mangxiao.storage.mapper;
 
-import com.mangxiao.storage.model.Sku;
+import com.mangxiao.common.model.Sku;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 

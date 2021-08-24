@@ -1,7 +1,7 @@
 package com.mangxiao.storage.service.impl;
 
+import com.mangxiao.common.model.Stock;
 import com.mangxiao.storage.mapper.StockMapper;
-import com.mangxiao.storage.model.Stock;
 import com.mangxiao.storage.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
