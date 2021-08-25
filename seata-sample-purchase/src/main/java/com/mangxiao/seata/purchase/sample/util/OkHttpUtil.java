@@ -11,11 +11,29 @@ public class OkHttpUtil {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private static final int TIMEOUT = 3000;
 
-    public String sendGetRequest(String url){
+    public String get(String url){
         Request request = new Request.Builder().url(url).build();
         Response response = null;
         try {
             response = client.newCall(request).execute();
+            if (response.isSuccessful()) {
+                return response.body().string();
+            }
+        } catch (IOException e){
+            log.debug("ERROR:" + e.getMessage());
+        }
+        return "";
+    }
+
+    public String post(String url, String paramJson){
+        try {
+            RequestBody body = new FormBody.Builder().build().create(JSON,paramJson);
+//            RequestBody body = RequestBody.create(JSON, paramJson);
+            Request request = new Request.Builder().addHeader("Content-Type", "application/json")
+                    .url(url)
+                    .post(body)
+                    .build();
+            Response response = client.newCall(request).execute();
             if (response.isSuccessful()) {
                 return response.body().string();
             }

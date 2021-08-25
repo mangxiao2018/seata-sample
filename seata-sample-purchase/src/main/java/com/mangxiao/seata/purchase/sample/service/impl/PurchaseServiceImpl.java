@@ -33,15 +33,15 @@ public class PurchaseServiceImpl implements PurchaseService {
 
     public boolean purchase(Purchase purchase) {
         // 1.获取商品信息
-        Sku sku = getSku(purchase);
+        Sku sku = getSkuX(purchase);
         // 2.获取库存信息
-        Stock stock = getStocks(purchase.getSkuId());
+        Stock stock = getStocksX(purchase.getSkuId());
         // 3.创建订单信息
-        String orderNo = createOder(sku, purchase, stock);
+        String orderNo = createOderX(sku, purchase, stock);
         // 4.扣减库存
-        deduction(purchase, stock);
+        deductionX(purchase, stock);
         // 5.财务记账
-        accounting(sku,purchase,stock,orderNo);
+        accountingX(sku,purchase,stock,orderNo);
         return Boolean.TRUE;
     }
 
@@ -53,11 +53,19 @@ public class PurchaseServiceImpl implements PurchaseService {
     private Sku getSku(Purchase purchase){
         OkHttpUtil httpUtil = new OkHttpUtil();
         String url = SKU_API_URL + "?skuId=" + purchase.getSkuId();
-        String retJson = httpUtil.sendGetRequest(url);
+        String retJson = httpUtil.get(url);
         Sku sku = JSONObject.parseObject(retJson, Sku.class);
         return sku;
     }
+    private Sku getSkuX(Purchase purchase){
+        OkHttpUtil httpUtil = new OkHttpUtil();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("skuId",purchase.getSkuId());
 
+        String retJson = httpUtil.post(SKU_API_URL,jsonObject.toString());
+        Sku sku = JSONObject.parseObject(retJson, Sku.class);
+        return sku;
+    }
     /**
      * 创建订单数据
      * @param sku
@@ -71,11 +79,24 @@ public class PurchaseServiceImpl implements PurchaseService {
                 "&quantity=" + purchase.getQuantity() +
                 "&skuPrice=" + sku.getSkuPrice() +
                 "&warehouseId=" + stock.getWarehouseId();
-        String retJson = httpUtil.sendGetRequest(url);
+        String retJson = httpUtil.get(url);
         System.out.println("#######orderNo:" + retJson);
         return retJson;
     }
 
+    private String createOderX(Sku sku,Purchase purchase, Stock stock){
+        OkHttpUtil httpUtil = new OkHttpUtil();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("skuId",sku.getSkuId());
+        jsonObject.put("quantity",purchase.getQuantity());
+        jsonObject.put("skuPrice",sku.getSkuPrice());
+        jsonObject.put("warehouseId",stock.getWarehouseId());
+
+        String retJson = httpUtil.post(ORDER_API_URL,jsonObject.toString());
+
+        System.out.println("#######orderNo:" + retJson);
+        return retJson;
+    }
     /**
      * 财务记账
      * @param sku
@@ -85,14 +106,25 @@ public class PurchaseServiceImpl implements PurchaseService {
      */
     private void accounting(Sku sku,Purchase purchase, Stock stock, String orderNo){
         OkHttpUtil httpUtil = new OkHttpUtil();
-        String retJson = httpUtil.sendGetRequest(FINANCE_API_URL + "?skuId=" + sku.getSkuId() +
+        String retJson = httpUtil.get(FINANCE_API_URL + "?skuId=" + sku.getSkuId() +
                 "&skuName=" + sku.getSkuName() +
                 "&skuPrice=" + sku.getSkuPrice() +
                 "&quantity=" + purchase.getQuantity() +
                 "&orderId=" + Long.valueOf(orderNo) +
                 "&warehouseId=" + stock.getWarehouseId());
     }
+    private void accountingX(Sku sku,Purchase purchase, Stock stock, String orderNo){
+        OkHttpUtil httpUtil = new OkHttpUtil();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("skuId",sku.getSkuId());
+        jsonObject.put("skuName",sku.getSkuName());
+        jsonObject.put("quantity",purchase.getQuantity());
+        jsonObject.put("skuPrice",sku.getSkuPrice());
+        jsonObject.put("orderId",Long.valueOf(orderNo));
+        jsonObject.put("warehouseId",stock.getWarehouseId());
 
+        String retJson = httpUtil.post(FINANCE_API_URL,jsonObject.toString());
+    }
     /**
      * 扣减库存
      * @param purchase
@@ -100,11 +132,19 @@ public class PurchaseServiceImpl implements PurchaseService {
      */
     private void deduction(Purchase purchase, Stock stock){
         OkHttpUtil httpUtil = new OkHttpUtil();
-        String retJson = httpUtil.sendGetRequest(DEDUCTION_STORAGE_API_URL + "?skuId=" + purchase.getSkuId() +
+        String retJson = httpUtil.get(DEDUCTION_STORAGE_API_URL + "?skuId=" + purchase.getSkuId() +
                 "&warehouseId=" + stock.getWarehouseId() +
                 "&saledQuantity=" + purchase.getQuantity());
     }
+    private void deductionX(Purchase purchase, Stock stock){
+        OkHttpUtil httpUtil = new OkHttpUtil();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("skuId",purchase.getSkuId());
+        jsonObject.put("saledQuantity",purchase.getQuantity());
+        jsonObject.put("warehouseId",stock.getWarehouseId());
 
+        String retJson = httpUtil.post(DEDUCTION_STORAGE_API_URL,jsonObject.toString());
+    }
     /**
      * 根据商品编码查库存信息
      * @param skuId
@@ -112,7 +152,16 @@ public class PurchaseServiceImpl implements PurchaseService {
      */
     private Stock getStocks(long skuId){
         OkHttpUtil httpUtil = new OkHttpUtil();
-        String retJson = httpUtil.sendGetRequest(QUARY_STORAGE_API_URL + "?skuId=" + skuId );
+        String retJson = httpUtil.get(QUARY_STORAGE_API_URL + "?skuId=" + skuId );
+        Stock stock = JSONObject.parseObject(retJson, Stock.class);
+        return stock;
+    }
+    private Stock getStocksX(long skuId){
+        OkHttpUtil httpUtil = new OkHttpUtil();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("skuId",skuId);
+
+        String retJson = httpUtil.post(QUARY_STORAGE_API_URL,jsonObject.toString());
         Stock stock = JSONObject.parseObject(retJson, Stock.class);
         return stock;
     }
